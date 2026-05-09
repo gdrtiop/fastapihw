@@ -54,10 +54,8 @@ pip-log.txt
 pip-delete-this-directory.txt
 
 # Unit test / coverage reports
-htmlcov/
 .tox/
 .nox/
-.coverage
 .coverage.*
 .cache
 nosetests.xml
@@ -317,5 +315,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
+test.db
 # End of https://www.toptal.com/developers/gitignore/api/pycharm+all,macos,windows,django
