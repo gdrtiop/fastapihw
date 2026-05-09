@@ -2,8 +2,13 @@ fastapi
 uvicorn
 sqlalchemy
 psycopg2-binary
-python-jose
+python-jose[cryptography]
 bcrypt
 pydantic
 python-dotenv
 redis
+fakeredis
+pytest
+pytest-cov
+httpx
+locust

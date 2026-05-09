@@ -1,0 +1,39 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.14.0, pytest-9.0.3, pluggy-1.6.0
+rootdir: /Users/stepan/Desktop/Global_projects/fastapihw
+configfile: pytest.ini
+plugins: cov-7.1.0, locust-2.43.4, anyio-4.13.0
+collected 59 items
+
+tests/test_functional.py ............................................    [ 74%]
+tests/test_unit.py ...............                                       [100%]
+
+=============================== warnings summary ===============================
+app/schemas.py:16
+  /Users/stepan/Desktop/Global_projects/fastapihw/app/schemas.py:16: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    class Task(TaskBase):
+
+tests/test_functional.py::TestRegister::test_register_duplicate_username
+  /Users/stepan/Desktop/Global_projects/fastapihw/tests/conftest.py:48: SAWarning: transaction already deassociated from connection
+    transaction.rollback()
+
+tests/test_functional.py: 35 warnings
+tests/test_unit.py: 5 warnings
+  /Users/stepan/Desktop/Global_projects/fastapihw/app/auth.py:17: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    expire = datetime.utcnow() + timedelta(hours=2)
+
+tests/test_functional.py: 33 warnings
+  /Users/stepan/Desktop/Global_projects/fastapihw/app/crud.py:33: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    db_task = Task(**task.dict(), owner_id=user_id)
+
+tests/test_functional.py: 33 warnings
+  /Users/stepan/Desktop/Global_projects/fastapihw/fastapihwvenv/lib/python3.14/site-packages/sqlalchemy/sql/schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_functional.py::TestUpdateTask::test_update_task_success
+tests/test_functional.py::TestUpdateTask::test_update_invalidates_cache
+  /Users/stepan/Desktop/Global_projects/fastapihw/app/crud.py:84: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.13/migration/
+    for key, value in data.dict(exclude_unset=True).items():
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 59 passed, 110 warnings in 30.74s =======================
