@@ -20,6 +20,9 @@ VALID_SORT = {"title", "status", "date"}
 
 @app.post("/register")
 def register(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    existing = db.query(models.User).filter(models.User.username == user.username).first()
+    if existing:
+        raise HTTPException(status_code=400, detail="Username already exists")
     hashed = auth.hash_password(user.password)
     db_user = models.User(username=user.username, password=hashed)
     db.add(db_user)

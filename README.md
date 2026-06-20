@@ -22,7 +22,7 @@ docker compose down --volumes
  
 ```bash
 docker swarm init
-docker build -t fastapi_app:latest .
+docker build -t fastapi_app:latest -f app/Dockerfile .
 export $(cat .env | xargs)
 docker stack deploy -c docker-compose.swarm.yml taskstack
 docker stack services taskstack
