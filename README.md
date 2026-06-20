@@ -1,14 +1,40 @@
 ## Важно!
 Лежит только `.env.example`, чтобы всё работало нужно создать свой `.env` в соответствии с примером
 
-## Запуск сервиса
+---
+ 
+## Запуск
+ 
 ```bash
-docker compose up --build
+docker compose up --build -d
+```
+ 
+Сервис: `http://localhost:8000/`
+ 
+Данные хранятся в volumes и сохраняются при перезапуске. Сбросить:
+```bash
+docker compose down --volumes
+```
+ 
+---
+ 
+## Docker Swarm
+ 
+```bash
+docker swarm init
+docker build -t fastapi_app:latest .
+export $(cat .env | xargs)
+docker stack deploy -c docker-compose.swarm.yml taskstack
+docker stack services taskstack
+```
+ 
+Остановка:
+```bash
+docker stack rm taskstack
+docker swarm leave --force
 ```
 
-## Обоснование кэширования
-- Кэшируем `GET /tasks` — самый частый запрос, данные меняются реже, при создании/удалении/изменении кэш сбрасывается
-- Кэшируем `GET /tasks/top?n=N` — аналогично, пользователь меняет сортировку не каждый раз
+---
 
 ## Тесты
 
